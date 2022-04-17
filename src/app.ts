@@ -1,4 +1,5 @@
 import express, {NextFunction, Request, Response} from 'express';
+import routes from "./routes";
 
 const app = express();
 app.use(express.json());
@@ -13,30 +14,7 @@ const middleware = ({name}: { name: String }) =>
 //Apply this middleware to every route
 app.use(middleware({name: "Prasad"}));
 
-app.get("/api/books/:bookId/:authorId",
-    // middleware,
-    (req: Request, res: Response, next: NextFunction) => {
-        //@ts-ignore
-        console.log(req.name);
-        //@ts-ignore
-        res.send(req.name);
-    }
-);
-
-//Error handling with async Action
-async function throwError() {
-    throw new Error("Boom!");
-}
-
-app.get("/error", async (req: Request, res: Response) => {
-    try{
-        await throwError();
-        res.sendStatus(200);
-    }catch (e) {
-        res.status(400).send("Something bad happened");
-    }
-});
-
+routes(app);
 app.listen(3000, () => {
     console.log("Application listen at http://localhost:3000");
 });
