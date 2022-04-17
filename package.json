@@ -1,0 +1,17 @@
+{
+  "name": "Rest_API_Express_Typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Prasadkpd",
+  "license": "ISC"
+}
