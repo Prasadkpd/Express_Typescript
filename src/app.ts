@@ -3,21 +3,10 @@ import express, {Request, Response} from 'express';
 const app = express();
 app.use(express.json());
 
-app
-    .route("/")
-    .get((req: Request, res: Response) => {
-        return res.send("You make a GET Request")
-    })
-    .post((req: Request, res: Response) => {
-        return res.send("You make a POST Request")
-    })
-    .put((req: Request, res: Response) => {
-        return res.send("You make a PUT Request")
-    })
-    .all((req: Request, res: Response) => {
-        return res.send("You make a X Request")
-    })
+app.get("/health", (req: Request, res: Response) => res.sendStatus(200));
+app.get("/ab*cd", (req: Request, res: Response) => res.send("/ab*cd"));
+app.get(/abc/, (req: Request, res: Response) => res.send("abc"));
 
-app.listen(4000, () => {
-    console.log("Application listen at http://localhost:4000");
+app.listen(3000, () => {
+    console.log("Application listen at http://localhost:3000");
 });
