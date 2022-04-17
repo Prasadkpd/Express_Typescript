@@ -1,13 +1,14 @@
-import express, {Request, Response} from 'express';
+import express, {NextFunction, Request, Response} from 'express';
 
 const app = express();
 app.use(express.json());
 
-app.get("/api/books/:bookId/:authorId", (req: Request, res: Response) => {
-    console.log(req.params.bookId);
-    console.log(req.params.authorId);
-    return res.send(req.params);
-});
+const handleGetBook = (req:Request, res:Response, next:NextFunction) => {
+  console.log(req.params);
+  return res.send(req.params);
+}
+
+app.get("/api/books/:bookId/:authorId", handleGetBook);
 
 app.listen(3000, () => {
     console.log("Application listen at http://localhost:3000");
