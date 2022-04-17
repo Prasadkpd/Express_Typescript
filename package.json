@@ -1,15 +1,17 @@
 {
-  "name": "Rest_API_Express_Typescript",
+  "name": "rest_api_express_typescript",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "express": "^4.17.3",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.3"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --respawn --transpile-only src/app.ts"
   },
   "keywords": [],
   "author": "Prasadkpd",
