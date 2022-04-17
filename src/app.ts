@@ -3,22 +3,20 @@ import express, {Request, Response} from 'express';
 const app = express();
 app.use(express.json());
 
-app.get('/', (req: Request, res: Response) => {
-    // return res.json({
-    //     success: true,
-    //     name: "Prasad"
-    // });
-    return res.redirect("http://www.prasakpd.me");
-});
-
-app.post("/api/data", (req: Request, res: Response) => {
-    console.log(req.body);
-    return res.sendStatus(200);
-});
-
-app.all("/api/all", (req: Request, res: Response) => {
-    return res.sendStatus(200);
-})
+app
+    .route("/")
+    .get((req: Request, res: Response) => {
+        return res.send("You make a GET Request")
+    })
+    .post((req: Request, res: Response) => {
+        return res.send("You make a POST Request")
+    })
+    .put((req: Request, res: Response) => {
+        return res.send("You make a PUT Request")
+    })
+    .all((req: Request, res: Response) => {
+        return res.send("You make a X Request")
+    })
 
 app.listen(4000, () => {
     console.log("Application listen at http://localhost:4000");
