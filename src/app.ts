@@ -4,7 +4,11 @@ const app = express();
 app.use(express.json());
 
 app.get('/', (req: Request, res: Response) => {
-    return res.send("Hello World");
+    // return res.json({
+    //     success: true,
+    //     name: "Prasad"
+    // });
+    return res.redirect("http://www.prasakpd.me");
 });
 
 app.post("/api/data", (req: Request, res: Response) => {
