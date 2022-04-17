@@ -8,9 +8,11 @@ const middleware = (req: Request, res: Response, next: NextFunction) => {
     req.name = "Prasad"
     next();
 }
+//Apply this middleware to every route
+app.use(middleware);
 
 app.get("/api/books/:bookId/:authorId",
-    middleware,
+    // middleware,
     (req: Request, res: Response, next: NextFunction) => {
         //@ts-ignore
         console.log(req.name);
