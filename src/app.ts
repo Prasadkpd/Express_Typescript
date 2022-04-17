@@ -23,9 +23,18 @@ app.get("/api/books/:bookId/:authorId",
     }
 );
 
-app.get("/error", () => {
-    console.log("Error");
+//Error handling with async Action
+async function throwError() {
     throw new Error("Boom!");
+}
+
+app.get("/error", async (req: Request, res: Response) => {
+    try{
+        await throwError();
+        res.sendStatus(200);
+    }catch (e) {
+        res.status(400).send("Something bad happened");
+    }
 });
 
 app.listen(3000, () => {
