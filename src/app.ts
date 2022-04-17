@@ -3,13 +3,15 @@ import express, {NextFunction, Request, Response} from 'express';
 const app = express();
 app.use(express.json());
 
-const middleware = (req: Request, res: Response, next: NextFunction) => {
-    //@ts-ignore
-    req.name = "Prasad"
-    next();
-}
+//Customizing the middleware with curring
+const middleware = ({name}: { name: String }) =>
+    (req: Request, res: Response, next: NextFunction) => {
+        //@ts-ignore
+        req.name = name;
+        next();
+    }
 //Apply this middleware to every route
-app.use(middleware);
+app.use(middleware({name: "Prasad"}));
 
 app.get("/api/books/:bookId/:authorId",
     // middleware,
